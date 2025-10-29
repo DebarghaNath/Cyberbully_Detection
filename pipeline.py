@@ -41,8 +41,8 @@ def mediaPipe_handGesture(image):
 def mediaPipe_faceMesh(image):
     return face.process(image)
 
-def Yolo_GunKnife(image):
-    return  gun_knife.predict(image)
+def Yolo_GunKnife(image_path):
+    return  gun_knife.predict(image_path)
 
 def preprocess(folder_path, target_size=(256, 256)):
 
@@ -75,7 +75,7 @@ def run_pipeline(folder_path):
         future_model[executor.submit(mediaPipe_bodyPose, image)] = ('Pose', image_name)
         future_model[executor.submit(mediaPipe_handGesture, image)] = ('Hands', image_name)
         future_model[executor.submit(mediaPipe_faceMesh, image)] = ('Face', image_name)
-        future_model[executor.submit(Yolo_GunKnife, image)] = ('Gun&Knife', image_name)
+        future_model[executor.submit(Yolo_GunKnife, os.path.join(folder_path, image_files[idx]))] = ('Gun&Knife', image_name)
       for future in as_completed(future_model):
         model_name, image_name = future_model[future]
         try:
