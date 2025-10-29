@@ -1,0 +1,7 @@
+protobuf==4.25.3
+numpy==1.26.4
+mediapipe==0.10.21
+ultralytics==8.3.74
+opencv-python
+pandas
+matplotlib
