@@ -396,7 +396,7 @@ def GunKnife_feature_extractor(result_dict,image_name,image_path):
 
     print(f"Top detection: {label} | conf={max_conf:.3f} | bbox=({x1},{y1},{x2},{y2})")
    
-    return np.array([x1*sx, y1*sy, x2*sx, y2*sy, max_conf, cls_idx], dtype=np.float32)
+    return np.array([x1*sx/w_orig, y1*sy/h_orig, x2*sx/w_orig, y2*sy/h_orig, max_conf, cls_idx], dtype=np.float32)
 
 
 ##================Features================
