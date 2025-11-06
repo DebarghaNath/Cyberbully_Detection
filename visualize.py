@@ -1,3 +1,8 @@
+import os
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
 def visualize_results(path, image_name, result_dict):
     image_path = os.path.join(path, image_name)
     image = cv2.imread(image_path)
