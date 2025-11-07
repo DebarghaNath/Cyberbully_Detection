@@ -416,7 +416,8 @@ def get_features(result, details, path):
     #print(len(face))
     hand = get_hand_feature(details, result[image_name])
     #print(len(hand))
-    gunknife = GunKnife_feature_extractor(result, image_name, path)
+    print("HELLO")
+    gunknife = GunKnife_feature_extractor(result[image_name], image_name, path)
     #print(len(gunknife))
     combined_features = np.concatenate([pose, face, hand, gunknife])
     all_features[image_name] = combined_features
