@@ -362,7 +362,9 @@ def GunKnife_feature_extractor(result_dict,image_name,image_path):
     sx = float(w_tgt) / float(w_orig)
     sy = float(h_tgt) / float(h_orig)
     yolo_results = result_dict.get("Gun&Knife")
+   
     if yolo_results is None:
+        print("NOT HERE")
         return np.zeros(6, dtype=np.float32)
 
     if isinstance(yolo_results, (list, tuple)):
@@ -408,13 +410,13 @@ def get_features(result, details, path):
     print(f"Extracting features for: {image_name}")
 
     pose = get_pose_feature(details, result[image_name])
-    print(len(pose))
+    #print(len(pose))
     face = get_face_feature(details, result[image_name])
-    print(len(face))
+    #print(len(face))
     hand = get_hand_feature(details, result[image_name])
-    print(len(hand))
+    #print(len(hand))
     gunknife = GunKnife_feature_extractor(result, image_name, path)
-    print(len(gunknife))
+    #print(len(gunknife))
     combined_features = np.concatenate([pose, face, hand, gunknife])
     all_features[image_name] = combined_features
 
