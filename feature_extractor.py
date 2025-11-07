@@ -356,6 +356,7 @@ def get_face_feature(detailed, result_dict):
       return basic
 ##==========================Gun&Knife===========================================
 def GunKnife_feature_extractor(result_dict,image_name,image_path):
+    print("HERE") 
     image = cv2.imread(os.path.join(image_path,image_name))
     h_orig, w_orig = image.shape[:2]
     w_tgt, h_tgt = 256,256
