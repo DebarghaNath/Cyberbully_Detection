@@ -401,7 +401,7 @@ def GunKnife_feature_extractor(result_dict,image_name,image_path):
 
 ##================Features================
 
-def get_features(result, details):
+def get_features(result, details, path):
   all_features = {}
 
   for image_name in result.keys():
@@ -413,7 +413,7 @@ def get_features(result, details):
     print(len(face))
     hand = get_hand_feature(details, result[image_name])
     print(len(hand))
-    gunknife = GunKnife_feature_extractor(result, image_name, '/content/Cyberbully_Detection/images/')
+    gunknife = GunKnife_feature_extractor(result, image_name, path)
     print(len(gunknife))
     combined_features = np.concatenate([pose, face, hand, gunknife])
     all_features[image_name] = combined_features
