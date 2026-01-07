@@ -44,8 +44,14 @@ def mediaPipe_faceMesh(image):
 def Yolo_GunKnife(image_path):
     return  gun_knife.predict(image_path)
 
-def preprocess(folder_path, target_size=(256, 256)):
+def preprocess(path, target_size=(256, 256)):
 
+  if os.path.isfile(path):
+      files_to_process = [os.path.basename(path)]
+      folder_path = os.path.dirname(path)
+  else:
+      files_to_process = os.listdir(path)
+      folder_path = path
   processed_image = []
   image_file = []
   for file in os.listdir(folder_path):
